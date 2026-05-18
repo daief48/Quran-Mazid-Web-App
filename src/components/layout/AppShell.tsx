@@ -6,6 +6,7 @@ import { IconSidebar } from "./IconSidebar";
 import { SurahSidebar } from "./SurahSidebar";
 import { MobileBottomNav } from "./MobileBottomNav";
 import { SettingsDrawer } from "../settings/SettingsDrawer";
+import { SearchModal } from "../search/SearchModal";
 import { SurahHeader } from "../reader/SurahHeader";
 import { AyahReader } from "../reader/AyahReader";
 import { PillNav } from "../reader/PillNav";
@@ -13,6 +14,7 @@ import { AudioPlayer } from "../audio/AudioPlayer";
 
 import { SurahMeta, AyahVerse, AppSettings } from "../../types";
 import { fetchSurahs, fetchSurahVerses, getAudioUrl } from "../../services/quranService";
+import { useSettingsStore } from "../../store/useSettingsStore";
 
 export const AppShell: React.FC = () => {
   // Global State
@@ -21,17 +23,30 @@ export const AppShell: React.FC = () => {
   const [verses, setVerses] = useState<AyahVerse[]>([]);
   const [isLoadingVerses, setIsLoadingVerses] = useState<boolean>(true);
 
-  // Settings State
-  const [settings, setSettings] = useState<AppSettings>({
+  // Settings State from Zustand Store
+  const { arabicFontSize, translationFontSize, arabicFont, viewMode, updateSettings } = useSettingsStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const settings: AppSettings = mounted ? {
+    arabicFontSize,
+    translationFontSize,
+    arabicFont,
+    viewMode,
+  } : {
     arabicFontSize: 34,
     translationFontSize: 17,
     arabicFont: "amiri",
     viewMode: "reading",
-  });
+  };
 
   // UI State
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   // Audio State
   const [activeAudioAyahId, setActiveAudioAyahId] = useState<number | null>(null);
@@ -89,7 +104,7 @@ export const AppShell: React.FC = () => {
         <Header
           onOpenMobileDrawer={() => setIsMobileDrawerOpen(true)}
           onOpenSettings={() => setIsSettingsOpen(true)}
-          onOpenSearch={() => alert("Search feature coming soon!")}
+          onOpenSearch={() => setIsSearchOpen(true)}
         />
 
         <div className="flex-1 flex overflow-hidden relative">
@@ -127,7 +142,16 @@ export const AppShell: React.FC = () => {
             isOpen={isSettingsOpen}
             onClose={() => setIsSettingsOpen(false)}
             settings={settings}
-            onSettingsChange={setSettings}
+            onSettingsChange={(newSettings) => updateSettings(newSettings)}
+          />
+
+          <SearchModal
+            isOpen={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            onSelectResult={(surahId, ayahNum) => {
+              setActiveSurahId(surahId);
+              setTimeout(() => handlePlayAyah(ayahNum), 500);
+            }}
           />
         </div>
       </div>

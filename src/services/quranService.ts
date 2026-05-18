@@ -43,29 +43,56 @@ const fetchWithTimeout = async (url: string, timeout = 3000) => {
   }
 };
 
+const BACKEND_URL = "http://localhost:8000/api";
+
 export async function fetchSurahs(): Promise<SurahMeta[]> {
   try {
-    const res = await fetchWithTimeout("https://cdn.jsdelivr.net/gh/risan/quran-json@main/data/surahs.json");
-    if (!res.ok) throw new Error("Failed to fetch surahs");
-    return await res.json();
+    const res = await fetchWithTimeout(`${BACKEND_URL}/surahs`, 4000);
+    if (!res.ok) throw new Error("Failed to fetch surahs from backend");
+    const json = await res.json();
+    return json.data.map((item: any) => ({
+      id: item.id,
+      name: item.name_arabic,
+      transliteration: item.name_english,
+      translation: item.translation,
+      type: item.revelation_type,
+      total_verses: item.total_ayahs,
+    }));
   } catch (err) {
-    console.warn("Using fallback surahs data due to network issue", err);
+    console.warn("Using fallback surahs data due to backend network issue", err);
     return fallbackSurahs;
   }
 }
 
 export async function fetchSurahVerses(surahId: number): Promise<AyahVerse[]> {
   try {
-    const res = await fetchWithTimeout(`https://cdn.jsdelivr.net/gh/risan/quran-json@main/data/surahs/${surahId}.json`);
-    if (!res.ok) throw new Error("Failed to fetch surah details");
-    const data = await res.json();
-    return data.verses;
+    const res = await fetchWithTimeout(`${BACKEND_URL}/surahs/${surahId}`, 4000);
+    if (!res.ok) throw new Error("Failed to fetch surah details from backend");
+    const json = await res.json();
+    return json.data.ayahs.map((ayah: any) => ({
+      id: ayah.ayah_number,
+      text: ayah.text_arabic,
+      translation: ayah.text_english,
+      transliteration: ayah.transliteration || "",
+    }));
   } catch (err) {
     console.warn("Using fallback verses data for surah", surahId, err);
     if (surahId === 1) return fallbackFatihahVerses;
     return [
       { id: 1, text: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", translation: "In the name of Allah, the Entirely Merciful, the Especially Merciful.", transliteration: "Bismillāhir-raḥmānir-raḥīm" }
     ];
+  }
+}
+
+export async function searchQuran(query: string, limit = 30) {
+  try {
+    const res = await fetch(`${BACKEND_URL}/search?q=${encodeURIComponent(query)}&limit=${limit}`);
+    if (!res.ok) throw new Error("Search request failed");
+    const json = await res.json();
+    return json.data;
+  } catch (err) {
+    console.error("Search API error:", err);
+    return { query, total_results: 0, results: [] };
   }
 }
 

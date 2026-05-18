@@ -33,3 +33,19 @@ export interface AppSettings {
   arabicFont: ArabicFont;
   viewMode: ViewMode;
 }
+
+export interface SearchResultItem {
+  surah_id: number;
+  surah_name: string;
+  ayah_number: number;
+  text_arabic: string;
+  text_english: string;
+  matched_text: string;
+}
+
+export interface SearchResponse {
+  query: string;
+  total_results: number;
+  results: SearchResultItem[];
+}
+
