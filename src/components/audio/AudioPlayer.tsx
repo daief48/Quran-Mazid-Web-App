@@ -28,12 +28,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.play().catch((e) => console.error("Audio play failed", e));
-      } else {
-        audioRef.current.pause();
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          if (error.name !== "AbortError") {
+            console.error("Audio play failed:", error);
+          }
+        });
       }
+    } else {
+      audio.pause();
     }
   }, [isPlaying, audioUrl]);
 
