@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surah Al Fatihah - Quran Mazid</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        qmGreen: '#1FA264',
+                        qmGreenHover: '#178551',
+                        qmBgMain: 'hsl(0deg 0% 5.49%)',
+                        qmBgSidebar: 'hsl(0deg 0% 5.49%)',
+                        qmBgCard: 'hsl(0deg 0% 9%)',
+                        qmBgActive: 'hsl(0deg 0% 14%)',
+                        qmBorder: 'hsl(0deg 0% 14%)',
+                        qmTextPrimary: '#F1F5F9',
+                        qmTextSecondary: '#8D939E',
+                        qmTextMuted: '#64748B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        amiri: ['"Amiri Quran"', 'serif'],
+                        scheherazade: ['"Scheherazade New"', 'serif'],
+                        noto: ['"Noto Sans Arabic"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: hsl(0deg 0% 5.49%);
+            color: #F1F5F9;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; 
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #222B3A; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2E3A4E; }
+
+        /* Rotate diamond badges */
+        .diamond-badge {
+            transform: rotate(45deg);
+            transition: all 0.2s ease;
+        }
+        .diamond-badge-content {
+            transform: rotate(-45deg);
+        }
+
+        /* Smooth font resizing transition */
+        .dynamic-arabic { transition: font-size 0.15s ease-out, line-height 0.15s ease-out; }
+        .dynamic-trans { transition: font-size 0.15s ease-out; }
+    </style>
+</head>
+<body class="flex h-screen w-full antialiased text-sm md:text-base select-none overflow-hidden bg-qmBgMain">
+
+    <!-- App Root Layout Container (Left Nav + Main Layout) -->
+    <div class="flex h-screen w-full overflow-hidden">
+        
+        <!-- Far Left Icon Navigation Bar -->
+        <aside class="hidden md:flex flex-col items-center w-[72px] bg-[hsl(0deg,0%,9.02%)] border-r border-qmBorder py-5 z-30 shrink-0 justify-between h-full shadow-xl">
+            <div class="flex flex-col items-center space-y-5 w-full">
+                <!-- App Logo -->
+                <a href="#" class="mb-3" title="Quran Mazid">
+                    <div class="bg-qmGreen w-12 h-12 rounded-[18px] flex items-center justify-center text-white shadow-lg shadow-qmGreen/25 hover:opacity-95 transition">
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.99183 0H29.0082C32.8696 0 36 3.13043 36 6.99183V29.0082C36 32.8696 32.8696 36 29.0082 36H6.99183C3.13043 36 0 32.8696 0 29.0082V6.99183C0 3.13043 3.13043 0 6.99183 0Z" class="fill-primary"></path><path d="M26.0687 24.5654V28.2374C26.0688 28.3545 26.0389 28.4696 25.9818 28.5717C25.9247 28.6739 25.8424 28.7597 25.7427 28.821C25.6429 28.8822 25.5292 28.9168 25.4122 28.9215C25.2953 28.9263 25.1791 28.9009 25.0748 28.8479L18 25.2596" stroke="#E2E2E2" stroke-width="0.782609"></path><path d="M9.92969 24.5654V28.2374C9.92957 28.3545 9.95949 28.4696 10.0166 28.5717C10.0737 28.6739 10.156 28.7597 10.2557 28.821C10.3554 28.8822 10.4692 28.9168 10.5861 28.9215C10.7031 28.9263 10.8193 28.9009 10.9236 28.8479L17.9976 25.2596" stroke="#E2E2E2" stroke-width="0.782609"></path><path opacity="0.35" d="M17.5839 24.1444C17.5839 24.3737 17.7733 24.5591 18.0018 24.5591V25.5405L8.60421 23.6114L7.45143 23.3821C7.093 23.3109 6.77034 23.1177 6.53844 22.8353C6.30654 22.5528 6.17975 22.1987 6.17969 21.8333V10.8729C6.17969 9.90245 7.04838 9.16131 8.00708 9.31392L18.001 10.9026V11.884C17.8908 11.8842 17.7852 11.9279 17.7071 12.0056C17.629 12.0833 17.5847 12.1886 17.5839 12.2988V24.1436V24.1444Z" fill="#E2E2E2"></path><path opacity="0.35" d="M18.4171 24.1444C18.4171 24.3737 18.2293 24.5591 18 24.5591V25.5405L27.3976 23.6114L28.5503 23.3821C28.9088 23.3109 29.2314 23.1177 29.4633 22.8353C29.6952 22.5528 29.822 22.1987 29.8221 21.8333V10.8729C29.8221 9.90245 28.9534 9.16131 27.9947 9.31392L18 10.9018V11.8832C18.2285 11.8832 18.4171 12.0687 18.4171 12.298V24.1436V24.1444Z" fill="#E2E2E2"></path><path d="M17.5806 24.1443C17.5806 24.3736 17.77 24.5591 17.9986 24.5591V25.5405L9.92986 22.0383L8.60099 21.4623C8.29824 21.3311 8.04048 21.1142 7.85944 20.8383C7.6784 20.5624 7.58197 20.2396 7.58203 19.9096V9.37417C7.58187 9.09963 7.64851 8.82918 7.7762 8.58615C7.9039 8.34312 8.08881 8.13482 8.31498 7.97921C8.54116 7.8236 8.8018 7.72536 9.07441 7.69297C9.34703 7.66058 9.62343 7.69501 9.87977 7.7933L17.9986 10.9026V11.884C17.8883 11.884 17.7824 11.9276 17.7041 12.0053C17.6259 12.083 17.5815 12.1885 17.5806 12.2988V24.1436V24.1443Z" fill="white"></path><path d="M28.0252 9.37374V9.37397V19.9095C28.0252 20.4269 27.7175 20.8958 27.2417 21.1032C27.2416 21.1033 27.2415 21.1033 27.2413 21.1034L25.9131 21.6791L25.9129 21.6792L18.3913 24.9439V24.8493C18.4568 24.8131 18.517 24.7678 18.5702 24.7147C18.6452 24.6398 18.7048 24.5509 18.7454 24.453C18.786 24.3551 18.8069 24.2501 18.8069 24.1441V12.2986C18.8069 12.0848 18.7219 11.8798 18.5708 11.7286C18.5173 11.6751 18.4571 11.6299 18.3921 11.5938V11.1708L26.2587 8.15774L26.2589 8.15769C26.4559 8.08214 26.6684 8.05567 26.878 8.08056C27.0875 8.10546 27.2879 8.18098 27.4618 8.3006C27.6356 8.42023 27.7778 8.58036 27.876 8.76718C27.974 8.95384 28.0253 9.16251 28.0252 9.37374Z" fill="#E2E2E2" stroke="#E2E2E2" stroke-width="0.782609"></path></svg>
+                    </div>
+                </a>
+
+                <!-- Home (Pentagon House) -->
+                <a href="#" class="w-12 h-12 rounded-2xl flex items-center justify-center text-qmTextSecondary hover:text-white transition-colors cursor-pointer group relative" title="Home">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 3l9 6.5v11a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 20.5v-11L12 3z"/><circle cx="12" cy="14" r="2.5"/></svg>
+                    <span class="absolute left-16 bg-qmBgActive text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition shadow-md whitespace-nowrap z-50 border border-qmBorder font-medium">Home</span>
+                </a>
+
+                <!-- Surahs (2x2 Grid) -->
+                <a href="#" class="w-12 h-12 rounded-2xl flex items-center justify-center bg-qmGreen/15 text-qmGreen border border-qmGreen/20 transition-colors cursor-pointer group relative shadow-inner" title="Surahs">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><circle cx="7" cy="7" r="3.5" opacity="0.9"/><rect x="13.5" y="3.5" width="7" height="7" rx="2" opacity="0.45"/><rect x="3.5" y="13.5" width="7" height="7" rx="2" opacity="0.45"/><circle cx="17" cy="17" r="3.5" opacity="0.9"/></svg>
+                    <span class="absolute left-16 bg-qmBgActive text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition shadow-md whitespace-nowrap z-50 border border-qmBorder font-medium">Surahs</span>
+                </a>
+
+                <!-- Community (Paper Plane) -->
+                <a href="#" class="w-12 h-12 rounded-2xl flex items-center justify-center text-qmTextSecondary hover:text-white transition-colors cursor-pointer group relative" title="Community / Feedback">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    <span class="absolute left-16 bg-qmBgActive text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition shadow-md whitespace-nowrap z-50 border border-qmBorder font-medium">Community</span>
+                </a>
+
+                <!-- Bookmarks (Curved Ribbon) -->
+                <a href="#" class="w-12 h-12 rounded-2xl flex items-center justify-center text-qmTextSecondary hover:text-white transition-colors cursor-pointer group relative" title="Bookmarks">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M7 7h10" stroke-width="1.5" opacity="0.3"/></svg>
+                    <span class="absolute left-16 bg-qmBgActive text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition shadow-md whitespace-nowrap z-50 border border-qmBorder font-medium">Bookmarks</span>
+                </a>
+
+                <!-- Other Apps (3 Squares + Lines) -->
+                <a href="#" class="w-12 h-12 rounded-2xl flex items-center justify-center text-qmTextSecondary hover:text-white transition-colors cursor-pointer group relative" title="Other Apps">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="14" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="14" width="6.5" height="6.5" rx="1.5"/><line x1="14" y1="16.5" x2="20" y2="16.5"/><line x1="14" y1="19.5" x2="20" y2="19.5"/></svg>
+                    <span class="absolute left-16 bg-qmBgActive text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition shadow-md whitespace-nowrap z-50 border border-qmBorder font-medium">Other Apps</span>
+                </a>
+            </div>
+
+        </aside>
+
+        <!-- Main Workspace Area (Header + Split Content) -->
+        <div class="flex-1 flex flex-col h-full min-w-0">
+            
+            <!-- Top App Header -->
+            <header class="h-[70px] bg-qmBgSidebar border-b border-qmBorder flex items-center justify-between px-6 z-20 shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="md:hidden w-10 h-10 rounded-xl bg-qmGreen/10 border border-qmGreen/20 text-qmGreen flex items-center justify-center cursor-pointer hover:bg-qmGreen/20 transition shadow-sm" onclick="window.toggleMobileSurahDrawer()" id="mobile-menu-toggle" title="Open Surah List">
+                        <i class="ph ph-list text-2xl font-bold"></i>
+                    </div>
+                    <div class="text-left">
+                        <h1 class="text-lg font-bold leading-none text-white tracking-wide">Quran Mazid</h1>
+                        <p class="text-[11px] text-qmTextSecondary mt-1">Read, Study, and Learn The Quran</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 md:gap-4">
+                    <button id="global-search-btn" class="w-10 h-10 rounded-full bg-qmGreen/10 text-qmGreen hover:bg-qmGreen/20 flex items-center justify-center transition cursor-pointer font-bold" title="Search">
+                        <i class="ph ph-magnifying-glass text-lg"></i>
+                    </button>
+                    <button id="theme-toggle" class="w-10 h-10 rounded-full bg-qmGreen/10 text-qmGreen hover:bg-qmGreen/20 flex items-center justify-center transition cursor-pointer font-bold" title="Toggle Theme">
+                        <i class="ph ph-circle-half-tilt text-lg font-bold"></i>
+                    </button>
+                    <button id="settings-toggle-top" class="w-10 h-10 rounded-full bg-qmGreen/10 text-qmGreen hover:bg-qmGreen/20 flex items-center justify-center transition cursor-pointer font-bold" title="Open Settings">
+                        <i class="ph-fill ph-gear text-lg"></i>
+                    </button>
+                    <a href="https://irdfoundation.com/sadaqa-jaria" target="_blank" class="hidden sm:flex bg-[#388E3C] hover:bg-[#2e7531] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition items-center shadow-lg shadow-qmGreen/10">
+                        <span>Support Us</span> 
+                        <div class="relative inline-flex items-center justify-center w-6 h-6 ml-1.5">
+                            <i class="ph-fill ph-heart text-lg text-emerald-200/50 absolute -left-0.5 -top-0.5"></i>
+                            <i class="ph-fill ph-heart text-xs text-white absolute right-0.5 bottom-0.5"></i>
+                        </div>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Workspace Body (Surah Sidebar + Reading Main + Settings Drawer) -->
+            <div class="flex-1 flex overflow-hidden relative">
+                
+                <!-- Mobile Surah Navigation Modal Backdrop -->
+                <div id="surah-sidebar-backdrop" onclick="window.toggleMobileSurahDrawer()" class="fixed inset-0 bg-black/80 z-40 hidden lg:hidden transition-opacity opacity-0 duration-300"></div>
+
+                <!-- Surah List Sidebar (2nd Column on desktop, sliding drawer on mobile) -->
+                <aside id="surah-sidebar" class="fixed inset-y-0 left-0 z-50 w-[320px] sm:w-[360px] bg-[#171717] border-r border-[#262626] h-full shrink-0 transform -translate-x-full lg:relative lg:translate-x-0 transition-transform duration-300 flex flex-col shadow-2xl lg:shadow-none">
+                    
+                    <!-- Mobile Drawer Header (Only shown on < lg) -->
+                    <div class="p-4 pb-2 lg:hidden flex items-center justify-between border-b border-[#262626]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-qmGreen/10 border border-qmGreen/20 flex items-center justify-center text-qmGreen font-bold shadow-md">
+<svg class="size-7" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.99183 0H29.0082C32.8696 0 36 3.13043 36 6.99183V29.0082C36 32.8696 32.8696 36 29.0082 36H6.99183C3.13043 36 0 32.8696 0 29.0082V6.99183C0 3.13043 3.13043 0 6.99183 0Z" class="fill-primary"></path><path d="M26.0687 24.5654V28.2374C26.0688 28.3545 26.0389 28.4696 25.9818 28.5717C25.9247 28.6739 25.8424 28.7597 25.7427 28.821C25.6429 28.8822 25.5292 28.9168 25.4122 28.9215C25.2953 28.9263 25.1791 28.9009 25.0748 28.8479L18 25.2596" stroke="#E2E2E2" stroke-width="0.782609"></path><path d="M9.92969 24.5654V28.2374C9.92957 28.3545 9.95949 28.4696 10.0166 28.5717C10.0737 28.6739 10.156 28.7597 10.2557 28.821C10.3554 28.8822 10.4692 28.9168 10.5861 28.9215C10.7031 28.9263 10.8193 28.9009 10.9236 28.8479L17.9976 25.2596" stroke="#E2E2E2" stroke-width="0.782609"></path><path opacity="0.35" d="M17.5839 24.1444C17.5839 24.3737 17.7733 24.5591 18.0018 24.5591V25.5405L8.60421 23.6114L7.45143 23.3821C7.093 23.3109 6.77034 23.1177 6.53844 22.8353C6.30654 22.5528 6.17975 22.1987 6.17969 21.8333V10.8729C6.17969 9.90245 7.04838 9.16131 8.00708 9.31392L18.001 10.9026V11.884C17.8908 11.8842 17.7852 11.9279 17.7071 12.0056C17.629 12.0833 17.5847 12.1886 17.5839 12.2988V24.1436V24.1444Z" fill="#E2E2E2"></path><path opacity="0.35" d="M18.4171 24.1444C18.4171 24.3737 18.2293 24.5591 18 24.5591V25.5405L27.3976 23.6114L28.5503 23.3821C28.9088 23.3109 29.2314 23.1177 29.4633 22.8353C29.6952 22.5528 29.822 22.1987 29.8221 21.8333V10.8729C29.8221 9.90245 28.9534 9.16131 27.9947 9.31392L18 10.9018V11.8832C18.2285 11.8832 18.4171 12.0687 18.4171 12.298V24.1436V24.1444Z" fill="#E2E2E2"></path><path d="M17.5806 24.1443C17.5806 24.3736 17.77 24.5591 17.9986 24.5591V25.5405L9.92986 22.0383L8.60099 21.4623C8.29824 21.3311 8.04048 21.1142 7.85944 20.8383C7.6784 20.5624 7.58197 20.2396 7.58203 19.9096V9.37417C7.58187 9.09963 7.64851 8.82918 7.7762 8.58615C7.9039 8.34312 8.08881 8.13482 8.31498 7.97921C8.54116 7.8236 8.8018 7.72536 9.07441 7.69297C9.34703 7.66058 9.62343 7.69501 9.87977 7.7933L17.9986 10.9026V11.884C17.8883 11.884 17.7824 11.9276 17.7041 12.0053C17.6259 12.083 17.5815 12.1885 17.5806 12.2988V24.1436V24.1443Z" fill="white"></path><path d="M28.0252 9.37374V9.37397V19.9095C28.0252 20.4269 27.7175 20.8958 27.2417 21.1032C27.2416 21.1033 27.2415 21.1033 27.2413 21.1034L25.9131 21.6791L25.9129 21.6792L18.3913 24.9439V24.8493C18.4568 24.8131 18.517 24.7678 18.5702 24.7147C18.6452 24.6398 18.7048 24.5509 18.7454 24.453C18.786 24.3551 18.8069 24.2501 18.8069 24.1441V12.2986C18.8069 12.0848 18.7219 11.8798 18.5708 11.7286C18.5173 11.6751 18.4571 11.6299 18.3921 11.5938V11.1708L26.2587 8.15774L26.2589 8.15769C26.4559 8.08214 26.6684 8.05567 26.878 8.08056C27.0875 8.10546 27.2879 8.18098 27.4618 8.3006C27.6356 8.42023 27.7778 8.58036 27.876 8.76718C27.974 8.95384 28.0253 9.16251 28.0252 9.37374Z" fill="#E2E2E2" stroke="#E2E2E2" stroke-width="0.782609"></path></svg>                            </div>
+                            <div>
+                                <h1 class="text-base font-bold text-white leading-tight font-sans tracking-wide">Quran Mazid</h1>
+                                <p class="text-[10px] text-qmTextSecondary leading-tight mt-0.5 font-medium">Read, Study, and Learn The Quran</p>
+                            </div>
+                        </div>
+                        <button onclick="window.toggleMobileSurahDrawer()" class="w-8 h-8 rounded-full bg-[#262626] text-qmTextSecondary hover:text-white flex items-center justify-center transition cursor-pointer font-bold">
+                            <i class="ph ph-x text-base"></i>
+                        </button>
+                    </div>
+
+                    <!-- Tabs Header -->
+                    <div class="p-4 pb-3">
+                        <div class="bg-qmBgCard p-1 rounded-full flex text-center text-xs font-semibold border border-qmBorder/50">
+                            <button class="flex-1 py-2 bg-qmBgActive text-white rounded-full shadow transition font-medium tracking-wide">Surah</button>
+                            <button class="flex-1 py-2 text-qmTextSecondary hover:text-white transition font-medium tracking-wide">Juz</button>
+                            <button class="flex-1 py-2 text-qmTextSecondary hover:text-white transition font-medium tracking-wide">Page</button>
+                        </div>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="px-4 pb-3">
+                        <div class="relative">
+                            <i class="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-qmTextSecondary text-base"></i>
+                            <input type="text" id="surah-search-input" placeholder="Search Surah" class="w-full bg-qmBgCard border border-qmBorder rounded-full py-2.5 pl-11 pr-4 text-sm text-white focus:outline-none focus:border-qmGreen transition font-sans">
+                        </div>
+                    </div>
+
+                    <!-- Surah Items Scrollable List -->
+                    <div class="flex-1 overflow-y-auto px-3 py-1 space-y-1.5" id="surah-sidebar-list">
+                        <div class="text-center text-qmTextSecondary py-12 animate-pulse text-sm">Loading Surahs...</div>
+                    </div>
+                </aside>
+
+                <!-- Main Reading Area (Center Content) -->
+                <main class="flex-1 h-full overflow-y-auto bg-qmBgMain relative" id="main-reader">
+                    <div class="max-w-4xl mx-auto px-6 md:px-12 py-10 pb-40">
+                        
+                        <!-- Surah Title Section (Exact match to screenshot - no card box) -->
+                        <div class="flex items-center justify-center relative pb-8 mb-4">
+                            <!-- Subtle Kaaba / Makkah Background Illustration -->
+                            <div class="absolute left-0 opacity-40 w-36 md:w-44 h-28 flex items-center pointer-events-none select-none">
+                                <img src="./makkah.png" alt="Makkah Illustration" class="w-full h-full object-contain filter contrast-125">
+                            </div>
+
+                            <div class="text-center space-y-1.5 z-10">
+                                <h1 class="text-2xl md:text-3xl font-bold text-white tracking-wide font-sans" id="main-surah-title">Surah Al Fatihah</h1>
+                                <p class="text-xs md:text-sm text-qmTextSecondary font-medium tracking-wide" id="main-surah-subtitle">Ayah 07 - Makkah</p>
+                            </div>
+                        </div>
+
+                        <!-- Sub-header Information Bar (Exact match to screenshot) -->
+                        <div class="flex justify-between items-center text-xs md:text-sm text-qmTextSecondary font-medium py-3.5 my-8 px-2 border-t border-b border-qmBorder/50">
+                            <span id="sub-surah-name">Al Fatihah</span>
+                            <span id="sub-page-num">Page: 01</span>
+                            <span id="sub-juz-num">Juz: 01</span>
+                        </div>
+
+                        <!-- Bismillah Header (Hidden for Surah 1 & Surah 9) -->
+                        <div id="bismillah-banner" class="text-center pb-10 mb-10 border-b border-qmBorder/60 hidden">
+                            <span class="font-scheherazade text-3xl md:text-4xl text-white tracking-wider">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</span>
+                        </div>
+
+                        <!-- Ayahs Container (Loaded with Al Fatihah Reading Mode by default) -->
+                        <div class="space-y-10 md:space-y-12" id="ayahs-container">
+                            <div class="bg-transparent px-4 py-8 md:p-10 rounded-3xl text-center md:text-justify leading-loose">
+                                <p class="dynamic-arabic font-amiri text-white tracking-wide leading-[75px]" style="direction: rtl; font-size: 36px;">
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer" onclick="window.playAyah(1, 1)">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                                    <span class="text-qmGreen mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝١</span>
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer" onclick="window.playAyah(1, 2)">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span>
+                                    <span class="text-qmGreen mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝٢</span>
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer" onclick="window.playAyah(1, 3)">الرَّحْمَٰنِ الرَّحِيمِ</span>
+                                    <span class="text-qmGreen mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝٣</span>
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer" onclick="window.playAyah(1, 4)">مَالِكِ يَوْمِ الدِّينِ</span>
+                                    <span class="text-qmGreen mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝٤</span>
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer" onclick="window.playAyah(1, 5)">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ</span>
+                                    <span class="text-qmGreen mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝٥</span>
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer relative group" onclick="window.playAyah(1, 6)">
+                                        اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ
+                                        <span class="absolute -top-12 left-1/2 -translate-x-1/2 bg-white text-black text-xs font-sans px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition pointer-events-none shadow-xl whitespace-nowrap z-50">সরল পথ</span>
+                                    </span>
+                                    <span class="text-qmGreen mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝٦</span>
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer" onclick="window.playAyah(1, 7)">صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</span>
+                                    <span class="text-qmGreen mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝٧</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Navigation Buttons -->
+                        <div class="pt-16 pb-12 flex justify-center items-center mt-12">
+                            <div class="inline-flex items-center bg-[#171717] border border-[#262626] rounded-full p-1.5 shadow-xl">
+                                <button id="prev-surah-btn" class="flex items-center gap-2.5 px-6 py-2.5 rounded-full text-sm font-medium text-qmTextSecondary hover:text-white transition disabled:opacity-20 disabled:pointer-events-none cursor-pointer">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M15 18l-6-6 6-6"/></svg>
+                                    <span>Previous</span>
+                                </button>
+                                
+                                <div class="w-[1px] h-5 bg-[#262626] mx-1"></div>
+                                
+                                <button id="next-surah-btn" class="flex items-center gap-2.5 px-6 py-2.5 rounded-full text-sm font-medium text-white hover:opacity-80 transition disabled:opacity-20 disabled:pointer-events-none cursor-pointer">
+                                    <span>Next</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M9 18l6-6-6-6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Right Settings Drawer (Sliding Panel) -->
+                <aside id="settings-drawer" class="fixed right-0 top-0 bottom-0 w-[340px] bg-qmBgSidebar border-l border-qmBorder z-40 transform translate-x-full transition-transform duration-300 flex flex-col h-full shadow-2xl">
+                    <!-- Drawer Header -->
+                    <div class="p-6 pb-4 flex items-center justify-between border-b border-qmBorder">
+                        <h2 class="font-bold text-white text-lg flex items-center gap-2">
+                            <i class="ph ph-gear text-qmGreen text-xl"></i> Settings
+                        </h2>
+                        <button id="close-settings-drawer" class="w-8 h-8 rounded-full bg-qmBgActive text-qmTextSecondary hover:text-white flex items-center justify-center transition cursor-pointer">
+                            <i class="ph ph-x text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Drawer Tabs -->
+                    <div class="p-6 pb-2">
+                        <div class="bg-qmBgCard p-1 rounded-full flex text-center text-xs font-semibold border border-qmBorder/50">
+                            <button id="tab-trans" class="flex-1 py-2 bg-qmBgActive text-white rounded-full shadow transition">Translation</button>
+                            <button id="tab-read" class="flex-1 py-2 text-qmTextSecondary hover:text-white transition">Reading</button>
+                        </div>
+                    </div>
+
+                    <!-- Drawer Scrollable Content -->
+                    <div class="flex-1 overflow-y-auto p-6 space-y-8">
+                        <!-- Reading Settings Accordion -->
+                        <div class="border-b border-qmBorder pb-6 space-y-4">
+                            <div class="flex items-center justify-between cursor-pointer group" id="toggle-read-settings">
+                                <h3 class="font-semibold text-white flex items-center gap-2.5">
+                                    <i class="ph ph-sliders text-qmGreen text-lg"></i> Reading Settings
+                                </h3>
+                                <i class="ph ph-caret-down text-qmTextSecondary group-hover:text-white transition"></i>
+                            </div>
+                        </div>
+
+                        <!-- Font Settings Group -->
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-white flex items-center gap-2.5">
+                                    <i class="ph ph-text-aa text-qmGreen text-lg"></i> Font Settings
+                                </h3>
+                            </div>
+
+                            <!-- Arabic Font Size Slider -->
+                            <div class="space-y-3 bg-qmBgCard p-4 rounded-2xl border border-qmBorder">
+                                <div class="flex justify-between items-center text-sm font-medium">
+                                    <span class="text-white">Arabic Font Size</span>
+                                    <span class="text-qmGreen font-bold" id="lbl-arabic-size">34px</span>
+                                </div>
+                                <input type="range" id="slider-arabic" min="24" max="60" step="1" value="34" class="w-full h-1.5 bg-qmBgActive rounded-lg appearance-none cursor-pointer accent-qmGreen">
+                            </div>
+
+                            <!-- Translation Font Size Slider -->
+                            <div class="space-y-3 bg-qmBgCard p-4 rounded-2xl border border-qmBorder">
+                                <div class="flex justify-between items-center text-sm font-medium">
+                                    <span class="text-white">Translation Size</span>
+                                    <span class="text-qmGreen font-bold" id="lbl-trans-size">17px</span>
+                                </div>
+                                <input type="range" id="slider-trans" min="14" max="30" step="1" value="17" class="w-full h-1.5 bg-qmBgActive rounded-lg appearance-none cursor-pointer accent-qmGreen">
+                            </div>
+
+                            <!-- Arabic Font Selector -->
+                            <div class="space-y-2 bg-qmBgCard p-4 rounded-2xl border border-qmBorder">
+                                <label class="text-sm font-medium text-white block mb-1">Arabic Font Face</label>
+                                <select id="select-arabic-font" class="w-full bg-qmBgActive border border-qmBorder rounded-xl p-3 text-sm text-white focus:outline-none focus:border-qmGreen cursor-pointer">
+                                    <option value="scheherazade">Scheherazade New</option>
+                                    <option value="amiri" selected>Amiri Quran</option>
+                                    <option value="noto">Noto Sans Arabic</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Help Spread Islam Banner -->
+                        <div class="bg-gradient-to-br from-qmGreen/20 to-emerald-950 border border-qmGreen/30 rounded-2xl p-5 space-y-3 mt-8">
+                            <h4 class="font-bold text-white text-base">Help spread Islam</h4>
+                            <p class="text-xs text-qmTextSecondary leading-relaxed">Your support helps us reach millions with the beautiful message of the Quran.</p>
+                            <a href="https://irdfoundation.com/sadaqa-jaria" target="_blank" class="block text-center bg-qmGreen hover:bg-qmGreenHover text-white py-2.5 rounded-xl font-semibold text-xs transition">Support Us</a>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#171717] border-t border-[#262626] z-50 flex justify-around items-center px-4 py-3 shadow-2xl">
+        <!-- Home (Pentagon) -->
+        <a href="#" class="flex flex-col items-center text-qmGreen group" title="Home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 3l9 6.5v11a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 20.5v-11L12 3z"/><circle cx="12" cy="14" r="2.5"/></svg>
+        </a>
+        
+        <!-- Surahs (2x2 Grid) -->
+        <a href="#" onclick="window.toggleMobileSurahDrawer(); return false;" class="flex flex-col items-center text-qmTextSecondary hover:text-white transition" id="mobile-surahs-toggle" title="Surahs">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><circle cx="7" cy="7" r="3.5" opacity="0.9"/><rect x="13.5" y="3.5" width="7" height="7" rx="2" opacity="0.45"/><rect x="3.5" y="13.5" width="7" height="7" rx="2" opacity="0.45"/><circle cx="17" cy="17" r="3.5" opacity="0.9"/></svg>
+        </a>
+        
+        <!-- Community (Paper Plane) -->
+        <a href="#" class="flex flex-col items-center text-qmTextSecondary hover:text-white transition" title="Community">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </a>
+
+        <!-- Bookmarks (Curved Ribbon) -->
+        <a href="#" class="flex flex-col items-center text-qmTextSecondary hover:text-white transition" title="Bookmarks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M7 7h10" stroke-width="1.5" opacity="0.3"/></svg>
+        </a>
+
+        <!-- Other Apps (3 Squares + Lines) -->
+        <a href="#" class="flex flex-col items-center text-qmTextSecondary hover:text-white transition" title="Other Apps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="14" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="14" width="6.5" height="6.5" rx="1.5"/><line x1="14" y1="16.5" x2="20" y2="16.5"/><line x1="14" y1="19.5" x2="20" y2="19.5"/></svg>
+        </a>
+    </div>
+
+    <!-- Sticky Bottom Audio Player Bar -->
+    <div id="audio-player-bar" class="fixed bottom-0 md:bottom-0 left-0 md:left-[70px] right-0 bg-qmBgSidebar/95 backdrop-blur border-t border-qmGreen p-4 z-50 transform translate-y-full transition-transform duration-300 hidden items-center justify-between px-6 md:px-10 shadow-2xl">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-qmGreen/15 border border-qmGreen flex items-center justify-center text-qmGreen text-base font-bold diamond-badge shrink-0" id="audio-surah-badge">
+                <span class="diamond-badge-content" id="audio-surah-num">1</span>
+            </div>
+            <div class="pl-1">
+                <p class="font-semibold text-white text-base font-sans" id="audio-title">Al-Fatihah • Ayah 1</p>
+                <p class="text-xs text-qmTextSecondary mt-0.5">Abdul Rahman Al-Sudais</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <button id="audio-prev" class="text-qmTextSecondary hover:text-white transition cursor-pointer"><i class="ph ph-skip-back text-2xl"></i></button>
+            <button id="audio-play-pause" class="w-12 h-12 rounded-full bg-qmGreen text-white flex items-center justify-center hover:scale-105 transition shadow-lg shadow-qmGreen/30 cursor-pointer"><i class="ph-fill ph-pause text-2xl"></i></button>
+            <button id="audio-next" class="text-qmTextSecondary hover:text-white transition cursor-pointer"><i class="ph ph-skip-forward text-2xl"></i></button>
+            <button id="audio-close" class="text-qmTextSecondary hover:text-red-400 ml-6 transition cursor-pointer"><i class="ph ph-x text-xl"></i></button>
+        </div>
+
+        <audio id="quran-audio-elem" class="hidden"></audio>
+    </div>
+
+    <!-- Application Javascript Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const surahSidebarList = document.getElementById('surah-sidebar-list');
+            const ayahsContainer = document.getElementById('ayahs-container');
+            const searchInput = document.getElementById('surah-search-input');
+            const mainTitle = document.getElementById('main-surah-title');
+            const mainSubtitle = document.getElementById('main-surah-subtitle');
+            const bismillahBanner = document.getElementById('bismillah-banner');
+            const prevBtn = document.getElementById('prev-surah-btn');
+            const nextBtn = document.getElementById('next-surah-btn');
+
+            // Settings Elements
+            const settingsDrawer = document.getElementById('settings-drawer');
+            const btnOpenSettingsTop = document.getElementById('settings-toggle-top');
+            const btnOpenSettingsLeft = document.getElementById('left-settings-btn');
+            const btnOpenSettingsMobile = document.getElementById('mobile-settings-toggle');
+            const btnCloseSettings = document.getElementById('close-settings-drawer');
+            const sliderArabic = document.getElementById('slider-arabic');
+            const sliderTrans = document.getElementById('slider-trans');
+            const lblArabic = document.getElementById('lbl-arabic-size');
+            const lblTrans = document.getElementById('lbl-trans-size');
+            const selectFont = document.getElementById('select-arabic-font');
+
+            // Audio Elements
+            const audioBar = document.getElementById('audio-player-bar');
+            const audioElem = document.getElementById('quran-audio-elem');
+            const audioPlayPause = document.getElementById('audio-play-pause');
+            const audioTitle = document.getElementById('audio-title');
+            const audioSurahNum = document.getElementById('audio-surah-num');
+            const audioClose = document.getElementById('audio-close');
+            const audioNext = document.getElementById('audio-next');
+            const audioPrev = document.getElementById('audio-prev');
+
+            let allSurahs = [];
+            let currentSurahId = 1;
+            let currentAyahAudioIndex = 0;
+            let currentAyahsList = [];
+            let isPlaying = false;
+
+            // Load saved preferences
+            let arabicFontSize = localStorage.getItem('qm_ar_size') || 36;
+            let transFontSize = localStorage.getItem('qm_tr_size') || 16;
+            let arabicFontFace = localStorage.getItem('qm_ar_font') || 'amiri';
+            let currentViewMode = localStorage.getItem('qm_view_mode') || 'reading';
+
+            // Apply loaded settings to controls
+            sliderArabic.value = arabicFontSize;
+            sliderTrans.value = transFontSize;
+            lblArabic.innerText = arabicFontSize + 'px';
+            lblTrans.innerText = transFontSize + 'px';
+            selectFont.value = arabicFontFace;
+
+            // View Mode Tab Handlers
+            const tabTrans = document.getElementById('tab-trans');
+            const tabRead = document.getElementById('tab-read');
+
+            function updateViewModeTabs() {
+                if (currentViewMode === 'reading') {
+                    tabRead.className = "flex-1 py-2 bg-qmBgActive text-white rounded-full shadow transition";
+                    tabTrans.className = "flex-1 py-2 text-qmTextSecondary hover:text-white transition";
+                } else {
+                    tabTrans.className = "flex-1 py-2 bg-qmBgActive text-white rounded-full shadow transition";
+                    tabRead.className = "flex-1 py-2 text-qmTextSecondary hover:text-white transition";
+                }
+            }
+            updateViewModeTabs();
+
+            tabTrans?.addEventListener('click', () => {
+                currentViewMode = 'translation';
+                localStorage.setItem('qm_view_mode', 'translation');
+                updateViewModeTabs();
+                if (currentAyahsList.length > 0) renderAyahs(currentAyahsList, currentSurahId);
+            });
+
+            tabRead?.addEventListener('click', () => {
+                currentViewMode = 'reading';
+                localStorage.setItem('qm_view_mode', 'reading');
+                updateViewModeTabs();
+                if (currentAyahsList.length > 0) renderAyahs(currentAyahsList, currentSurahId);
+            });
+
+            // Settings Drawer Handlers
+            const openDrawer = () => settingsDrawer.classList.remove('translate-x-full');
+            const closeDrawer = () => settingsDrawer.classList.add('translate-x-full');
+            btnOpenSettingsTop?.addEventListener('click', openDrawer);
+            btnOpenSettingsLeft?.addEventListener('click', openDrawer);
+            btnOpenSettingsMobile?.addEventListener('click', openDrawer);
+            btnCloseSettings?.addEventListener('click', closeDrawer);
+
+            // Fallback Data in case of offline / local CORS restrictions
+            const fallbackSurahs = [
+                { id: 1, name: "الفاتحة", transliteration: "Al-Fatihah", translation: "The Opener", type: "meccan", total_verses: 7 },
+                { id: 2, name: "البقرة", transliteration: "Al-Baqarah", translation: "The Cow", type: "medinan", total_verses: 286 },
+                { id: 3, name: "آل عمران", transliteration: "Al-Imran", translation: "Family of Imran", type: "medinan", total_verses: 200 },
+                { id: 4, name: "النساء", transliteration: "An-Nisa", translation: "The Women", type: "medinan", total_verses: 176 },
+                { id: 5, name: "المائدة", transliteration: "Al-Ma'idah", translation: "The Table Spread", type: "medinan", total_verses: 120 },
+                { id: 6, name: "الأنعام", transliteration: "Al-An'am", translation: "The Cattle", type: "meccan", total_verses: 165 },
+                { id: 7, name: "الأعراف", transliteration: "Al-A'raf", translation: "The Heights", type: "meccan", total_verses: 206 },
+                { id: 8, name: "الأنفال", transliteration: "Al-Anfal", translation: "The Spoils of War", type: "medinan", total_verses: 75 },
+                { id: 9, name: "التوبة", transliteration: "At-Tawbah", translation: "The Repentance", type: "medinan", total_verses: 129 },
+                { id: 10, name: "يونس", transliteration: "Yunus", translation: "Jonah", type: "meccan", total_verses: 109 },
+                { id: 18, name: "الكهف", transliteration: "Al-Kahf", translation: "The Cave", type: "meccan", total_verses: 110 },
+                { id: 36, name: "يس", transliteration: "Ya-Sin", translation: "Ya Sin", type: "meccan", total_verses: 83 },
+                { id: 55, name: "الرحمن", transliteration: "Ar-Rahman", translation: "The Beneficent", type: "medinan", total_verses: 78 },
+                { id: 67, name: "الملك", transliteration: "Al-Mulk", translation: "The Sovereignty", type: "meccan", total_verses: 30 },
+                { id: 112, name: "الإخلاص", transliteration: "Al-Ikhlas", translation: "The Sincerity", type: "meccan", total_verses: 4 },
+                { id: 113, name: "الفلق", transliteration: "Al-Falaq", translation: "The Daybreak", type: "meccan", total_verses: 5 },
+                { id: 114, name: "الناس", transliteration: "An-Nas", translation: "Mankind", type: "meccan", total_verses: 6 }
+            ];
+
+            const fallbackFatihahVerses = [
+                { id: 1, text: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", translation: "In the name of Allah, the Entirely Merciful, the Especially Merciful." },
+                { id: 2, text: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", translation: "[All] praise is [due] to Allah, Lord of the worlds -" },
+                { id: 3, text: "الرَّحْمَٰنِ الرَّحِيمِ", translation: "The Entirely Merciful, the Especially Merciful," },
+                { id: 4, text: "مَالِكِ يَوْمِ الدِّينِ", translation: "Sovereign of the Day of Recompense." },
+                { id: 5, text: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", translation: "It is You we worship and You we ask for help." },
+                { id: 6, text: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", translation: "Guide us to the straight path -" },
+                { id: 7, text: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ", translation: "The path of those upon whom You have bestowed favor, not of those who have earned [Your] anger or of those who are astray." }
+            ];
+
+            // Fetch Surahs Metadata with Robust Fallback
+            try {
+                const res = await fetch('https://cdn.jsdelivr.net/gh/risan/quran-json@main/data/surahs.json');
+                allSurahs = await res.json();
+                renderSurahSidebar(allSurahs);
+                loadSurah(1); // Load Al Fatihah default
+            } catch (err) {
+                console.warn("Using fallback surahs data due to network/CORS issue", err);
+                allSurahs = fallbackSurahs;
+                renderSurahSidebar(allSurahs);
+                loadSurah(1);
+            }
+
+            // Search filter
+            searchInput.addEventListener('input', (e) => {
+                const q = e.target.value.toLowerCase();
+                const filtered = allSurahs.filter(s => s.transliteration.toLowerCase().includes(q) || s.name.includes(q) || s.id.toString() === q || s.translation.toLowerCase().includes(q));
+                renderSurahSidebar(filtered);
+            });
+
+            // Sliders live changes
+            sliderArabic.addEventListener('input', (e) => {
+                arabicFontSize = e.target.value;
+                lblArabic.innerText = arabicFontSize + 'px';
+                localStorage.setItem('qm_ar_size', arabicFontSize);
+                document.querySelectorAll('.dynamic-arabic').forEach(el => {
+                    el.style.fontSize = arabicFontSize + 'px';
+                    el.style.lineHeight = (parseInt(arabicFontSize) * 1.9) + 'px';
+                });
+            });
+
+            sliderTrans.addEventListener('input', (e) => {
+                transFontSize = e.target.value;
+                lblTrans.innerText = transFontSize + 'px';
+                localStorage.setItem('qm_tr_size', transFontSize);
+                document.querySelectorAll('.dynamic-trans').forEach(el => el.style.fontSize = transFontSize + 'px');
+            });
+
+            selectFont.addEventListener('change', (e) => {
+                arabicFontFace = e.target.value;
+                localStorage.setItem('qm_ar_font', arabicFontFace);
+                const fontClass = arabicFontFace === 'scheherazade' ? 'font-scheherazade' : arabicFontFace === 'amiri' ? 'font-amiri' : 'font-noto';
+                document.querySelectorAll('.dynamic-arabic').forEach(el => {
+                    el.classList.remove('font-scheherazade', 'font-amiri', 'font-noto');
+                    el.classList.add(fontClass);
+                });
+            });
+
+            // Helper to convert numbers to Arabic numerals
+            function toArabicNumeral(n) {
+                const arabicDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+                return n.toString().split('').map(d => arabicDigits[d] || d).join('');
+            }
+
+            // Render Surah Sidebar Items
+            function renderSurahSidebar(surahs) {
+                surahSidebarList.innerHTML = surahs.map(s => {
+                    const isActive = s.id === currentSurahId;
+                    return `
+                        <div onclick="window.selectSurah(${s.id})" class="flex items-center gap-4 p-3.5 rounded-2xl ${isActive ? 'bg-qmBgCard/80 border border-qmGreen text-white shadow-md' : 'hover:bg-qmBgCard/50 border border-transparent text-qmTextSecondary'} transition cursor-pointer group">
+                            <div class="w-9 h-9 shrink-0 flex items-center justify-center ${isActive ? 'bg-qmGreen text-white shadow-lg shadow-qmGreen/20' : 'bg-[#1E2736] group-hover:text-white'} text-sm font-bold diamond-badge transition">
+                                <span class="diamond-badge-content">${s.id}</span>
+                            </div>
+                            <div class="flex-1 min-w-0 pl-1">
+                                <h4 class="font-semibold ${isActive ? 'text-white' : 'text-qmTextPrimary'} truncate text-[15px] leading-snug">Surah ${s.transliteration.replace('-', ' ')}</h4>
+                                <p class="text-[12px] text-qmTextSecondary truncate mt-0.5">${s.translation}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            window.toggleMobileSurahDrawer = (forceClose = false) => {
+                const sidebar = document.getElementById('surah-sidebar');
+                const backdrop = document.getElementById('surah-sidebar-backdrop');
+                if (!sidebar || !backdrop) return;
+
+                const isClosed = sidebar.classList.contains('-translate-x-full');
+                if (isClosed && !forceClose) {
+                    sidebar.classList.remove('-translate-x-full');
+                    backdrop.classList.remove('hidden');
+                    setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    backdrop.classList.add('opacity-0');
+                    setTimeout(() => backdrop.classList.add('hidden'), 300);
+                }
+            };
+
+            window.selectSurah = (id) => {
+                if (id === currentSurahId) return;
+                currentSurahId = id;
+                renderSurahSidebar(allSurahs);
+                loadSurah(id);
+                if (window.innerWidth < 1024) {
+                    window.toggleMobileSurahDrawer(true);
+                }
+            };
+
+            async function loadSurah(id) {
+                ayahsContainer.innerHTML = '<div class="text-center py-24 text-qmTextSecondary animate-pulse font-sans text-base">Loading Surah Ayahs...</div>';
+                
+                const surahMeta = allSurahs.find(s => s.id === id);
+                if (surahMeta) {
+                    mainTitle.innerText = `Surah ${surahMeta.transliteration.replace('-', ' ')}`;
+                    mainSubtitle.innerText = `Ayah ${surahMeta.total_verses} - ${surahMeta.type === 'meccan' ? 'Makkah' : 'Madinah'}`;
+                    
+                    // Update sub-header bar
+                    document.getElementById('sub-surah-name').innerText = surahMeta.transliteration.replace('-', ' ');
+                    document.getElementById('sub-page-num').innerText = `Page: ${id < 10 ? '0' + id : id}`;
+                    document.getElementById('sub-juz-num').innerText = `Juz: ${Math.ceil(id / 3.8) < 10 ? '0' + Math.ceil(id / 3.8) : Math.ceil(id / 3.8)}`;
+
+                    // Show Bismillah only for Surahs 2-114 (except 9)
+                    if (id === 1 || id === 9) {
+                        bismillahBanner.classList.add('hidden');
+                    } else {
+                        bismillahBanner.classList.remove('hidden');
+                    }
+                }
+
+                prevBtn.disabled = id === 1;
+                nextBtn.disabled = id === 114;
+
+                try {
+                    const res = await fetch(`https://cdn.jsdelivr.net/gh/risan/quran-json@main/data/surahs/${id}.json`);
+                    const data = await res.json();
+                    currentAyahsList = data.verses;
+                    renderAyahs(currentAyahsList, id);
+                } catch (err) {
+                    console.warn("Using fallback verses due to network/CORS issue", err);
+                    currentAyahsList = fallbackFatihahVerses;
+                    renderAyahs(currentAyahsList, id);
+                }
+            }
+
+            prevBtn.addEventListener('click', () => selectSurah(currentSurahId - 1));
+            nextBtn.addEventListener('click', () => selectSurah(currentSurahId + 1));
+
+            // Render Verses according to view mode
+            function renderAyahs(verses, surahId) {
+                const fontClass = arabicFontFace === 'scheherazade' ? 'font-scheherazade' : arabicFontFace === 'amiri' ? 'font-amiri' : 'font-noto';
+                
+                if (currentViewMode === 'reading') {
+                    ayahsContainer.innerHTML = `
+                        <div class="bg-transparent px-2 py-6 md:p-8 rounded-3xl text-center md:text-justify leading-loose">
+                            <p class="dynamic-arabic ${fontClass} text-white tracking-wide leading-[75px]" style="direction: rtl; font-size: ${arabicFontSize}px;">
+                                ${verses.map(v => `
+                                    <span class="inline-block hover:text-qmGreen transition cursor-pointer px-1 py-1 rounded" onclick="window.playAyah(${surahId}, ${v.id})" id="ayah-${v.id}">${v.text}</span>
+                                    <span class="text-qmGreen mx-1.5 md:mx-2 font-normal inline-block text-2xl md:text-3xl select-none align-middle font-sans">۝${toArabicNumeral(v.id)}</span>
+                                `).join(' ')}
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    ayahsContainer.innerHTML = verses.map(v => `
+                        <div id="ayah-${v.id}" class="flex flex-col md:flex-row gap-6 md:gap-10 py-8 border-b border-qmBorder/60 group transition px-4 rounded-2xl hover:bg-qmBgCard/40">
+                            <!-- Left Actions Sidebar -->
+                            <div class="flex md:flex-col items-center md:items-start gap-5 pt-2 md:w-16 shrink-0">
+                                <span class="text-qmGreen font-semibold text-base tracking-wide">${surahId}:${v.id}</span>
+                                <button onclick="window.playAyah(${surahId}, ${v.id})" class="text-qmTextSecondary hover:text-qmGreen transition cursor-pointer" title="Play Recitation"><i class="ph ph-play text-xl"></i></button>
+                                <button class="text-qmTextSecondary hover:text-white transition cursor-pointer" title="Reading / Tafsir"><i class="ph ph-book-open text-xl"></i></button>
+                                <button class="text-qmTextSecondary hover:text-white transition cursor-pointer" title="Bookmark"><i class="ph ph-bookmark-simple text-xl"></i></button>
+                                <button class="text-qmTextSecondary hover:text-white transition cursor-pointer" title="More Actions"><i class="ph ph-dots-three text-xl"></i></button>
+                            </div>
+                            
+                            <!-- Right Arabic + Translation Content -->
+                            <div class="flex-1 flex flex-col space-y-8 min-w-0">
+                                <!-- Arabic RTL -->
+                                <div class="text-right">
+                                    <span class="dynamic-arabic ${fontClass} text-white tracking-wide break-words inline-block text-right" style="direction: rtl; font-size: ${arabicFontSize}px; line-height: ${parseInt(arabicFontSize) * 1.9}px;">
+                                        ${v.text} <span class="inline-flex items-center justify-center w-9 h-9 rounded-full border border-qmBorder bg-qmBgCard text-qmGreen text-xs font-sans mx-1.5 align-middle shadow-sm font-semibold">${v.id}</span>
+                                    </span>
+                                </div>
+                                <!-- Translation LTR -->
+                                <div class="text-left space-y-2">
+                                    <p class="text-xs text-qmTextMuted font-semibold tracking-wider uppercase">
+                                        Saheeh International
+                                    </p>
+                                    <p class="dynamic-trans text-white leading-relaxed font-normal" style="font-size: ${transFontSize}px;">
+                                        ${v.translation}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // Audio Player Controls
+            window.playAyah = (surahId, ayahNum) => {
+                currentAyahAudioIndex = ayahNum - 1;
+                audioBar.classList.remove('hidden');
+                setTimeout(() => audioBar.classList.remove('translate-y-full'), 50);
+
+                const verse = currentAyahsList[currentAyahAudioIndex];
+                if (!verse) return;
+
+                audioTitle.innerText = `${mainTitle.innerText} • Ayah ${ayahNum}`;
+                audioSurahNum.innerText = surahId;
+
+                const globalId = calculateGlobalAyahId(surahId, ayahNum);
+                const audioUrl = `https://cdn.islamic.network/quran/audio/128/ar.sudais/${globalId}.mp3`;
+
+                audioElem.src = audioUrl;
+                audioElem.play();
+                isPlaying = true;
+                audioPlayPause.innerHTML = '<i class="ph-fill ph-pause text-2xl"></i>';
+
+                highlightActiveVerse(ayahNum);
+            };
+
+            function highlightActiveVerse(ayahNum) {
+                document.querySelectorAll('[id^="ayah-"]').forEach(el => el.classList.remove('border-l-4', 'border-qmGreen', 'bg-qmGreen/10', 'text-qmGreen'));
+                const activeCard = document.getElementById(`ayah-${ayahNum}`);
+                if (activeCard) {
+                    if (currentViewMode === 'reading') {
+                        activeCard.classList.add('bg-qmGreen/20', 'text-qmGreen');
+                    } else {
+                        activeCard.classList.add('border-l-4', 'border-qmGreen', 'bg-qmBgCard/60');
+                    }
+                    activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            audioPlayPause.addEventListener('click', () => {
+                if (isPlaying) {
+                    audioElem.pause();
+                    isPlaying = false;
+                    audioPlayPause.innerHTML = '<i class="ph-fill ph-play text-2xl"></i>';
+                } else {
+                    audioElem.play();
+                    isPlaying = true;
+                    audioPlayPause.innerHTML = '<i class="ph-fill ph-pause text-2xl"></i>';
+                }
+            });
+
+            audioNext.addEventListener('click', () => {
+                if (currentAyahAudioIndex < currentAyahsList.length - 1) {
+                    playAyah(currentSurahId, currentAyahAudioIndex + 2);
+                }
+            });
+
+            audioPrev.addEventListener('click', () => {
+                if (currentAyahAudioIndex > 0) {
+                    playAyah(currentSurahId, currentAyahAudioIndex);
+                }
+            });
+
+            audioElem.addEventListener('ended', () => {
+                if (currentAyahAudioIndex < currentAyahsList.length - 1) {
+                    playAyah(currentSurahId, currentAyahAudioIndex + 2);
+                } else {
+                    isPlaying = false;
+                    audioPlayPause.innerHTML = '<i class="ph-fill ph-play text-2xl"></i>';
+                }
+            });
+
+            audioClose.addEventListener('click', () => {
+                audioElem.pause();
+                isPlaying = false;
+                audioBar.classList.add('translate-y-full');
+                setTimeout(() => audioBar.classList.add('hidden'), 300);
+            });
+
+            function calculateGlobalAyahId(surahId, ayahNum) {
+                let prevCount = 0;
+                for (let i = 0; i < surahId - 1; i++) {
+                    prevCount += allSurahs[i]?.total_verses || 0;
+                }
+                return prevCount + ayahNum;
+            }
+        });
+    </script>
+</body>
+</html>

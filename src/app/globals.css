@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-qmGreen: #1FA264;
+  --color-qmGreenHover: #178551;
+  --color-qmBgMain: hsl(0deg 0% 5.49%);
+  --color-qmBgSidebar: hsl(0deg 0% 5.49%);
+  --color-qmBgCard: hsl(0deg 0% 9%);
+  --color-qmBgActive: hsl(0deg 0% 14%);
+  --color-qmBorder: hsl(0deg 0% 14%);
+  --color-qmTextPrimary: #F1F5F9;
+  --color-qmTextSecondary: #8D939E;
+  --color-qmTextMuted: #64748B;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-amiri: "Amiri Quran", serif;
+  --font-scheherazade: "Scheherazade New", serif;
+  --font-noto: "Noto Sans Arabic", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-qmBgMain);
+    color: var(--color-qmTextPrimary);
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #222B3A; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2E3A4E; }
+
+  /* Rotate diamond badges */
+  .diamond-badge {
+      transform: rotate(45deg);
+      transition: all 0.2s ease;
+  }
+  .diamond-badge-content {
+      transform: rotate(-45deg);
+  }
+
+  /* Smooth font resizing transition */
+  .dynamic-arabic { transition: font-size 0.15s ease-out, line-height 0.15s ease-out; }
+  .dynamic-trans { transition: font-size 0.15s ease-out; }
+}
