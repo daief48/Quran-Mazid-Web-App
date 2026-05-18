@@ -1,9 +1,21 @@
 [build]
-  command = "npm run build"
+  command = "npm run netlify:build"
   publish = ".next"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[build.environment]
-  NEXT_PUBLIC_BACKEND_URL = "https://your-backend-url.com/api" # User needs to replace this when deploying backend
+[context.production.environment]
+  MONGO_URI = "mongodb+srv://daiefsikder425:daief420vai@cluster0.eivduzo.mongodb.net/quran?retryWrites=true&w=majority&appName=Cluster0"
+  NEXT_PUBLIC_BACKEND_URL = "https://quran-mazid-web-app.netlify.app/api"
+  NEXT_PUBLIC_EVERYAYAH_BASE_URL = "https://everyayah.com/ayah"
