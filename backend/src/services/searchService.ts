@@ -8,7 +8,7 @@ export class SearchService {
     this.repository = new SearchRepository();
   }
 
-  public search(query: string, limit = 30): SearchResponse {
+  public async search(query: string, limit = 30): Promise<SearchResponse> {
     if (!query || query.trim().length < 2) {
       return {
         query,
@@ -17,7 +17,7 @@ export class SearchService {
       };
     }
 
-    const results = this.repository.searchQuran(query, limit);
+    const results = await this.repository.searchQuran(query, limit);
 
     return {
       query,

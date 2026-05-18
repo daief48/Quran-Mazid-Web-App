@@ -43,7 +43,7 @@ const fetchWithTimeout = async (url: string, timeout = 3000) => {
   }
 };
 
-const BACKEND_URL = "http://localhost:8000/api";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000/api";
 
 export async function fetchSurahs(): Promise<SurahMeta[]> {
   try {

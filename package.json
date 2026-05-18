@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:backend": "tsc -p backend/tsconfig.json",
+    "netlify:build": "npm run build && npm run build:backend",
+    "deploy:manual": "npx cross-env NETLIFY_FORCE_DEPLOY=true npx netlify deploy --prod"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -23,6 +26,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "netlify-cli": "^17.33.0",
+    "cross-env": "^7.0.3"
   }
 }

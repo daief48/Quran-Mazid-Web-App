@@ -1,19 +1,24 @@
-import { db, initDb } from './index.ts';
+import mongoose from 'mongoose';
+import { connectDB } from './index.ts';
+import { Surah } from '../models/Surah.ts';
+import { Ayah } from '../models/Ayah.ts';
 
 const UNPKG_BASE = 'https://unpkg.com/quran-json@1.0.1/json';
 
 async function seed() {
-  console.log('Initializing database schema...');
-  initDb();
+  console.log('Connecting to MongoDB...');
+  await connectDB();
 
-  const countRow = db.prepare('SELECT count(*) as count FROM surahs').get() as { count: number };
-  if (countRow.count === 114) {
+  const count = await Surah.countDocuments();
+  if (count === 114) {
     console.log('Database already seeded with 114 surahs. Skipping seed.');
+    process.exit(0);
     return;
   }
 
   console.log('Clearing existing data for fresh seed...');
-  db.exec('DELETE FROM ayahs; DELETE FROM surahs; DELETE FROM search_index;');
+  await Surah.deleteMany({});
+  await Ayah.deleteMany({});
 
   console.log('Fetching surahs list from unpkg...');
   const res = await fetch(`${UNPKG_BASE}/surahs.json`);
@@ -29,74 +34,40 @@ async function seed() {
     total_verses: number;
   }>;
 
-  console.log('Fetching all 114 surahs verse data from unpkg...');
-  const allSurahsVerses: Array<{
-    surahNumber: number;
-    verses: Array<{ number: number; text: string; translation_en: string }>;
-  }> = [];
+  console.log('Inserting Surahs and fetching Verses...');
 
   for (const surah of surahs) {
-    console.log(`Downloading Surah ${surah.number}: ${surah.transliteration_en}...`);
+    console.log(`Processing Surah ${surah.number}: ${surah.transliteration_en}...`);
+    await Surah.create({
+      id: surah.number,
+      name: surah.name.replace('سورة ', ''),
+      transliteration: surah.transliteration_en,
+      translation: surah.translation_en,
+      type: surah.revelation_type.toLowerCase(),
+      total_verses: surah.total_verses
+    });
+
     const vRes = await fetch(`${UNPKG_BASE}/surahs/${surah.number}.json`);
     if (!vRes.ok) {
       throw new Error(`Failed to fetch verses for surah ${surah.number}: ${vRes.status} ${vRes.statusText}`);
     }
     const surahData = await vRes.json() as {
-      verses: Array<{ number: number; text: string; translation_en: string }>;
+      verses: Array<{ number: number; text: string; translation_en: string; transliteration_en?: string }>;
     };
-    allSurahsVerses.push({ surahNumber: surah.number, verses: surahData.verses });
+
+    const ayahsToInsert = surahData.verses.map(verse => ({
+      surah_id: surah.number,
+      ayah_number: verse.number,
+      text: verse.text,
+      translation: verse.translation_en,
+      transliteration: verse.transliteration_en || ''
+    }));
+
+    await Ayah.insertMany(ayahsToInsert);
   }
 
-  console.log('All downloads complete. Running synchronous SQLite transaction...');
-
-  const insertSurah = db.prepare(`
-    INSERT INTO surahs (id, name_arabic, name_english, translation, revelation_type, total_ayahs)
-    VALUES (?, ?, ?, ?, ?, ?)
-  `);
-
-  const insertAyah = db.prepare(`
-    INSERT INTO ayahs (surah_id, ayah_number, text_arabic, text_english, transliteration)
-    VALUES (?, ?, ?, ?, ?)
-  `);
-
-  const insertSearch = db.prepare(`
-    INSERT INTO search_index (surah_id, ayah_number, text_arabic, text_english)
-    VALUES (?, ?, ?, ?)
-  `);
-
-  const insertTransaction = db.transaction(() => {
-    for (const surah of surahs) {
-      insertSurah.run(
-        surah.number,
-        surah.name.replace('سورة ', ''),
-        surah.transliteration_en,
-        surah.translation_en,
-        surah.revelation_type.toLowerCase(),
-        surah.total_verses
-      );
-
-      const surahVerses = allSurahsVerses.find(s => s.surahNumber === surah.number)?.verses || [];
-      for (const verse of surahVerses) {
-        insertAyah.run(
-          surah.number,
-          verse.number,
-          verse.text,
-          verse.translation_en,
-          ''
-        );
-
-        insertSearch.run(
-          surah.number,
-          verse.number,
-          verse.text,
-          verse.translation_en
-        );
-      }
-    }
-  });
-
-  insertTransaction();
-  console.log('Successfully seeded Quran database with FTS5 search index!');
+  console.log('Successfully seeded Quran database in MongoDB!');
+  process.exit(0);
 }
 
 seed().catch(err => {

@@ -6,13 +6,13 @@ const surahService = new SurahService();
 
 export class SurahController {
   public static async getSurahs(c: Context) {
-    const surahs = surahService.getAllSurahs();
+    const surahs = await surahService.getAllSurahs();
     return c.json(successResponse(surahs));
   }
 
   public static async getSurahById(c: Context) {
     const id = Number(c.req.param('id'));
-    const surah = surahService.getSurahById(id);
+    const surah = await surahService.getSurahById(id);
     return c.json(successResponse(surah));
   }
 }

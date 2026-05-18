@@ -7,7 +7,12 @@ import searchRoutes from './routes/searchRoutes.ts';
 import { errorHandler } from './middleware/errorHandler.ts';
 import { CONFIG } from './config/index.ts';
 
+import { connectDB } from './db/index.ts';
+
 const app = new Hono();
+
+// Connect to MongoDB
+connectDB();
 
 // Global Middleware
 app.use('*', logger());
