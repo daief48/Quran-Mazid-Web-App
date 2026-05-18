@@ -12,7 +12,7 @@ import { connectDB } from './db/index.ts';
 const app = new Hono();
 
 // Connect to MongoDB
-connectDB();
+await connectDB();
 
 // Global Middleware
 app.use('*', logger());

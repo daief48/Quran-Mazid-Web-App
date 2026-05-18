@@ -13,7 +13,7 @@ const AyahSchema = new Schema<IAyah>({
   ayah_number: { type: Number, required: true },
   text: { type: String, required: true },
   translation: { type: String, required: true },
-  transliteration: { type: String, required: true },
+  transliteration: { type: String, required: false, default: "" },
 });
 
 // Compound index for finding specific ayahs efficiently

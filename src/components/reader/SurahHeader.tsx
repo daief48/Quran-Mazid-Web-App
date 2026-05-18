@@ -23,6 +23,7 @@ export const SurahHeader: React.FC<SurahHeaderProps> = ({ surah }) => {
             src="/makkah.png"
             alt="Makkah Illustration"
             fill
+            sizes="(max-width: 768px) 144px, 176px"
             className="object-contain filter contrast-125 mix-blend-screen"
             priority
           />
